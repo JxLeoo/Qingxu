@@ -60,7 +60,7 @@ class Curve {
 
 const SiriWave: React.FC<SiriWaveProps> = ({ analyser }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   const curvesRef = useRef<Curve[]>([]);
 
   useEffect(() => {
@@ -96,7 +96,6 @@ const SiriWave: React.FC<SiriWaveProps> = ({ analyser }) => {
       return () => {
         if (animationRef.current) {
           cancelAnimationFrame(animationRef.current);
-          animationRef.current = undefined;
         }
       };
     }
