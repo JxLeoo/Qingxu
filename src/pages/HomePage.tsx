@@ -8,8 +8,8 @@ const scenarios = [
     id: 'obsess',
     path: '/obsess/input',
     emoji: '💭',
-    title: '反复纠结',
-    description: '同一件事想停停不下来',
+    title: '思绪纷飞',
+    description: '一件事想个没完',
     accent: 'from-lime-300 to-green-400',
     cardClassName: 'bg-lime-100/60 hover:bg-lime-200/60 border-lime-200/80'
   },
