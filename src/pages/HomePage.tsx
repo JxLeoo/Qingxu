@@ -1,6 +1,8 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useStore } from '../store'
+import { supabase } from '../lib/supabase'
 
 
 const scenarios = [
@@ -36,6 +38,21 @@ const scenarios = [
 export default function HomePage() {
   const navigate = useNavigate()
   const { setStartTime, setTriggerType } = useStore()
+
+  useEffect(() => {
+    const fetchTestMessage = async () => {
+      console.log('Attempting to fetch from Supabase...')
+      const { data, error } = await supabase.from('test').select('message')
+
+      if (error) {
+        console.error('Error fetching from Supabase:', error)
+      } else {
+        console.log('Successfully fetched from Supabase:', data)
+      }
+    }
+
+    fetchTestMessage()
+  }, [])
 
   const handleScenario = (scenario: typeof scenarios[0]) => {
     // Trigger re-deploy
