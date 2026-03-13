@@ -46,7 +46,7 @@ export default function ObsessDonePage() {
           transition={{ delay: 0.3 }}
           className="text-2xl font-light mb-2 text-emerald-900"
         >
-          执念封存成功
+          思绪放飞成功
         </motion.h1>
 
         <motion.p

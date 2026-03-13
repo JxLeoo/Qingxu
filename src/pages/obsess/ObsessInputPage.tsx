@@ -53,10 +53,10 @@ export default function ObsessInputPage() {
               <PenLine className="w-6 h-6 text-lime-600" />
             </motion.div>
             <h1 className="text-[22px] font-light text-emerald-900 mb-2">
-              把反复纠结的事写下来
+              把脑中的思绪写下来
             </h1>
             <p className="text-emerald-700 text-[14px]">
-              写完就放下，别自己扛着
+              写完就放飞，别自己扛着
             </p>
           </div>
 
@@ -100,7 +100,7 @@ export default function ObsessInputPage() {
           onClick={handleSkip}
           className="w-full py-3 text-emerald-700 hover:text-emerald-900 transition-colors text-[14px]"
         >
-          直接封存
+          直接放飞
         </button>
       </div>
 
@@ -125,7 +125,7 @@ export default function ObsessInputPage() {
                 <div className="text-3xl mb-3">🤔</div>
                 <h3 className="text-[17px] font-light mb-2 text-emerald-900">不写点什么？</h3>
                 <p className="text-emerald-700 text-[13px]">
-                  直接封存也可以
+                  直接放飞也可以
                 </p>
               </div>
               <div className="flex gap-2">
@@ -141,7 +141,7 @@ export default function ObsessInputPage() {
                   className="flex-1 py-3 bg-gradient-to-r from-lime-500 to-green-500
                              rounded-xl font-light text-white transition-colors text-[14px] shadow-lg"
                 >
-                  直接封存
+                  直接放飞
                 </button>
               </div>
             </motion.div>
