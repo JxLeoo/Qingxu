@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
+import { supabase } from './lib/supabase'
 
 interface Session {
   date: string
@@ -49,28 +50,19 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const addSession = (trigger: string) => {
-    const endTime = Date.now()
-    const duration = startTime ? Math.floor((endTime - startTime) / 1000) : 0
+    // Save to Supabase
+    const saveToSupabase = async () => {
+      if (!startTime) return
+      const duration_ms = Date.now() - startTime
+      const { error } = await supabase
+        .from('activities')
+        .insert({ type: trigger, duration_ms })
 
-    const newSession: Session = {
-      date: getToday(),
-      duration,
-      trigger
+      if (error) {
+        console.error('Error saving activity to Supabase:', error)
+      }
     }
-
-    const updated = [...todaySessions, newSession]
-    setTodaySessions(updated)
-
-    // Save to localStorage
-    try {
-      const allData = JSON.parse(localStorage.getItem('naoting_sessions') || '[]')
-      const today = getToday()
-      const otherDays = allData.filter((s: Session) => s.date !== today)
-      const newData = [...otherDays, newSession]
-      localStorage.setItem('naoting_sessions', JSON.stringify(newData))
-    } catch (e) {
-      console.error('Failed to save session', e)
-    }
+    saveToSupabase()
 
     setStartTime(null)
     setTriggerType('')
