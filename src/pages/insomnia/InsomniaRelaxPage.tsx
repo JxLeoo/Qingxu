@@ -29,7 +29,13 @@ export default function InsomniaRelaxPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white relative overflow-hidden flex flex-col items-center justify-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-slate-900 text-white relative overflow-hidden flex flex-col items-center justify-center"
+    >
       {/* Metallic glossy background effect */}
       <div
         className="pointer-events-none absolute -inset-px opacity-50 transition duration-300"
@@ -100,6 +106,6 @@ export default function InsomniaRelaxPage() {
           ))}
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }

@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import { StoreProvider } from './store'
 import HomePage from './pages/HomePage'
 import StatsPage from './pages/StatsPage'
@@ -14,7 +15,8 @@ import InsomniaSleepPage from './pages/insomnia/InsomniaSleepPage'
 import InsomniaDonePage from './pages/insomnia/InsomniaDonePage'
 
 // Emotion scenario
-import EmotionSelectPage from './pages/emotion/EmotionSelectPage'
+
+import EmotionIntroPage from './pages/emotion/EmotionIntroPage';
 import EmotionReleasePage from './pages/emotion/EmotionReleasePage'
 import EmotionDonePage from './pages/emotion/EmotionDonePage'
 
@@ -22,6 +24,7 @@ import { useEffect } from 'react'
 
 function AppContent() {
   const navigate = useNavigate()
+  const location = useLocation()
 
   // Handle URL params for passive trigger (future use)
   useEffect(() => {
@@ -35,26 +38,28 @@ function AppContent() {
   }, [navigate])
 
   return (
-    <Routes>
-      {/* Home */}
-      <Route path="/" element={<HomePage />} />
-      <Route path="/stats" element={<StatsPage />} />
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        {/* Home */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/stats" element={<StatsPage />} />
 
-      {/* Obsess Scenario */}
-      <Route path="/obsess/input" element={<ObsessInputPage />} />
-      <Route path="/obsess/seal" element={<ObsessSealPage />} />
-      <Route path="/obsess/done" element={<ObsessDonePage />} />
+        {/* Obsess Scenario */}
+        <Route path="/obsess/input" element={<ObsessInputPage />} />
+        <Route path="/obsess/seal" element={<ObsessSealPage />} />
+        <Route path="/obsess/done" element={<ObsessDonePage />} />
 
-      {/* Insomnia Scenario */}
-      <Route path="/insomnia/relax" element={<InsomniaRelaxPage />} />
-      <Route path="/insomnia/sleep" element={<InsomniaSleepPage />} />
-      <Route path="/insomnia/done" element={<InsomniaDonePage />} />
+        {/* Insomnia Scenario */}
+        <Route path="/insomnia/relax" element={<InsomniaRelaxPage />} />
+        <Route path="/insomnia/sleep" element={<InsomniaSleepPage />} />
+        <Route path="/insomnia/done" element={<InsomniaDonePage />} />
 
-      {/* Emotion Scenario */}
-      <Route path="/emotion/select" element={<EmotionSelectPage />} />
-      <Route path="/emotion/release" element={<EmotionReleasePage />} />
-      <Route path="/emotion/done" element={<EmotionDonePage />} />
-    </Routes>
+        {/* Emotion Scenario */}
+        <Route path="/emotion/intro" element={<EmotionIntroPage />} />
+        <Route path="/emotion/release" element={<EmotionReleasePage />} />
+        <Route path="/emotion/done" element={<EmotionDonePage />} />
+      </Routes>
+    </AnimatePresence>
   )
 }
 

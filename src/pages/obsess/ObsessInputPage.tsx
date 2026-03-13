@@ -23,7 +23,13 @@ export default function ObsessInputPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-100 via-green-100 to-teal-100 text-emerald-900 relative overflow-hidden flex flex-col transition-colors duration-500">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-gradient-to-br from-lime-100 via-green-100 to-teal-100 text-emerald-900 relative overflow-hidden flex flex-col transition-colors duration-500"
+    >
       {/* Header */}
       <div className="relative z-10 p-6">
         <button
@@ -148,6 +154,6 @@ export default function ObsessInputPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   )
 }

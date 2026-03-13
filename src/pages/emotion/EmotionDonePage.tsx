@@ -13,7 +13,7 @@ export default function EmotionDonePage() {
 
   const handleGoHome = () => navigate('/')
 
-  const handleAgain = () => navigate('/emotion/select')
+  const handleAgain = () => navigate('/emotion/intro')
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-100 via-amber-100 to-orange-100 text-amber-900 relative overflow-hidden flex flex-col items-center justify-center px-6">

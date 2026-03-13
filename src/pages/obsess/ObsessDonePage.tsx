@@ -19,7 +19,13 @@ export default function ObsessDonePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-100 via-green-100 to-teal-100 text-emerald-900 relative overflow-hidden flex flex-col items-center justify-center px-6 transition-colors duration-500">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-gradient-to-br from-lime-100 via-green-100 to-teal-100 text-emerald-900 relative overflow-hidden flex flex-col items-center justify-center px-6 transition-colors duration-500"
+    >
       {/* Background is now part of the main div */}
 
       <motion.div
@@ -100,6 +106,6 @@ export default function ObsessDonePage() {
           </button>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }

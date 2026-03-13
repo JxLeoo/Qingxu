@@ -27,7 +27,7 @@ const scenarios = [
   },
   {
     id: 'emotion',
-    path: '/emotion/select',
+    path: '/emotion/intro',
     emoji: '💔',
     title: '心里堵得慌',
     description: '越想越难受',
