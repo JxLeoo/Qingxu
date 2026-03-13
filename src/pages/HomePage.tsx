@@ -17,15 +17,6 @@ const scenarios = [
     cardClassName: 'bg-lime-100/60 hover:bg-lime-200/60 border-lime-200/80 dark:bg-lime-900/20 dark:hover:bg-lime-900/40 dark:border-lime-800/50'
   },
   {
-    id: 'insomnia',
-    path: '/insomnia/relax',
-    emoji: '😴',
-    title: '睡不着',
-    description: '脑子乱糟糟的',
-    accent: 'from-blue-400 to-indigo-500',
-    cardClassName: 'bg-blue-200/60 hover:bg-blue-300/60 border-blue-300/80 dark:bg-blue-900/20 dark:hover:bg-blue-900/40 dark:border-blue-800/50'
-  },
-  {
     id: 'emotion',
     path: '/emotion/intro',
     emoji: '💔',
@@ -33,6 +24,15 @@ const scenarios = [
     description: '越想越难受',
     accent: 'from-amber-300 to-orange-400',
     cardClassName: 'bg-amber-100/60 hover:bg-amber-200/60 border-amber-200/80 dark:bg-amber-900/20 dark:hover:bg-amber-900/40 dark:border-amber-800/50'
+  },
+  {
+    id: 'insomnia',
+    path: '/insomnia/relax',
+    emoji: '😴',
+    title: '睡不着',
+    description: '脑子乱糟糟的',
+    accent: 'from-blue-400 to-indigo-500',
+    cardClassName: 'bg-blue-200/60 hover:bg-blue-300/60 border-blue-300/80 dark:bg-blue-900/20 dark:hover:bg-blue-900/40 dark:border-blue-800/50'
   },
 ]
 
