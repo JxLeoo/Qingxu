@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import SiriWave from '../../components/SiriWave';
 import { ArrowLeft, Mic, Square, X } from 'lucide-react'
 
 interface Bubble {
@@ -76,55 +77,7 @@ export default function EmotionReleasePage() {
     }
   }, [type])
 
-  useEffect(() => {
-    if (type === 'voice' && isRecording && canvasRef.current) {
-      const canvas = canvasRef.current
-      const ctx = canvas.getContext('2d')
-      if (!ctx) return
 
-      const draw = () => {
-        if (!analyserRef.current || !ctx) return
-
-        const bufferLength = analyserRef.current.frequencyBinCount
-        const dataArray = new Uint8Array(bufferLength)
-        analyserRef.current.getByteTimeDomainData(dataArray)
-
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-        ctx.lineWidth = 1.5
-        ctx.strokeStyle = '#a78bfa' // violet-400
-        ctx.beginPath()
-
-        const sliceWidth = canvas.width / bufferLength
-        let x = 0
-
-        for (let i = 0; i < bufferLength; i++) {
-          const v = dataArray[i] / 128.0
-          const y = (v * canvas.height) / 2
-
-          if (i === 0) {
-            ctx.moveTo(x, y)
-          } else {
-            ctx.lineTo(x, y)
-          }
-
-          x += sliceWidth
-        }
-
-        ctx.lineTo(canvas.width, canvas.height / 2)
-        ctx.stroke()
-
-        animationRef.current = requestAnimationFrame(draw)
-      }
-
-      draw()
-    }
-
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current)
-    }
-  }, [type, isRecording])
 
   const popBubble = (id: number) => {
     setBubbles(prev => prev.map(b =>
@@ -272,12 +225,7 @@ export default function EmotionReleasePage() {
 
       {/* Content */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6">
-        <canvas
-          ref={canvasRef}
-          width={300}
-          height={120}
-          className="w-full max-w-[280px] h-28 mb-10 rounded-2xl bg-white/5 backdrop-blur-sm shadow-inner"
-        />
+        <SiriWave analyser={analyserRef.current} />
 
         <motion.button
           onClick={isRecording ? stopRecording : startRecording}
