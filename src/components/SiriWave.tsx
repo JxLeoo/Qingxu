@@ -96,6 +96,7 @@ const SiriWave: React.FC<SiriWaveProps> = ({ analyser }) => {
       return () => {
         if (animationRef.current) {
           cancelAnimationFrame(animationRef.current);
+          animationRef.current = undefined;
         }
       };
     }

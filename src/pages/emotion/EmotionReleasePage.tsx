@@ -34,7 +34,7 @@ export default function EmotionReleasePage() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
   const analyserRef = useRef<AnalyserNode | null>(null)
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+
   const animationRef = useRef<number | null>(null)
   const timerRef = useRef<number | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
