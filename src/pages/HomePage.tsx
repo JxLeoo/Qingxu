@@ -55,6 +55,7 @@ export default function HomePage() {
   }, [])
 
   const handleScenario = (scenario: typeof scenarios[0]) => {
+    // Trigger re-deploy
     setStartTime(Date.now())
     setTriggerType(scenario.id)
     navigate(scenario.path)
