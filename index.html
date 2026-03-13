@@ -18,6 +18,14 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      try {
+        const module = await import('/src/main.tsx');
+      } catch (e) {
+        const root = document.getElementById('root');
+        root.innerHTML = `<div style="padding: 20px; color: white; font-family: sans-serif;"><h3>Application Error</h3><p>Failed to load the application. Please check the console for details.</p><pre>${e.stack}</pre></div>`;
+        console.error('Failed to load main.tsx:', e);
+      }
+    </script>
   </body>
 </html>
