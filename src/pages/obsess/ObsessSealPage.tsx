@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useStore } from '../../store'
-import { Send } from 'lucide-react'
+import { PaperPlaneIcon } from '../../components/PaperPlaneIcon'
 
 const COOLDOWN_SECONDS = 30
 
@@ -45,10 +45,10 @@ export default function ObsessSealPage() {
         >
           <motion.div
             animate={{
-              x: [0, 100, 250],
-              y: [0, -80, -200],
-              rotate: [0, 20, 45],
-              scale: [1, 1.2, 0.5],
+              x: [0, 150, 300],
+              y: [0, -60, -150],
+              rotate: [-15, 10, 25],
+              scale: [1, 1.1, 0.5],
               opacity: [1, 1, 0],
             }}
             transition={{
@@ -58,7 +58,7 @@ export default function ObsessSealPage() {
               repeatDelay: 1,
             }}
           >
-            <Send className="w-20 h-20 text-lime-600 -rotate-45" />
+            <PaperPlaneIcon className="w-20 h-20 text-lime-600" />
           </motion.div>
         </motion.div>
 
