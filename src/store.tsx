@@ -14,7 +14,7 @@ interface StoreState {
   setTriggerType: (type: string) => void
   todaySessions: Session[]
   preferredSound: string
-  addSession: (trigger: string) => void
+  addSession: (trigger: string) => Promise<void>
   setPreferredSound: (sound: string) => void
   clearTodaySessions: () => void
 }
@@ -49,21 +49,19 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     if (saved) setPreferredSoundState(saved)
   }, [])
 
-  const addSession = (trigger: string) => {
-    // Save to Supabase
-    const saveToSupabase = async () => {
-      if (!startTime) return
-      const duration_ms = Date.now() - startTime
-      const { error } = await supabase
-        .from('activities')
-        .insert({ type: trigger, duration_ms })
+  const addSession = async (trigger: string) => {
+    if (!startTime) return
 
-      if (error) {
-        console.error('Error saving activity to Supabase:', error)
-      }
+    const duration_ms = Date.now() - startTime
+    const { error } = await supabase
+      .from('activities')
+      .insert({ type: trigger, duration_ms })
+
+    if (error) {
+      console.error('Error saving activity to Supabase:', error)
     }
-    saveToSupabase()
 
+    // Reset state only after the database operation is complete
     setStartTime(null)
     setTriggerType('')
   }
